@@ -1,0 +1,17 @@
+To avoid this unexpected behavior, use viewport units (`vw`, `vh`) or absolute units instead of percentages when possible, especially within nested elements.
+
+Here's a revised example using `vw`:
+
+```css
+.parent {
+  width: 50vw; /* Uses viewport width */
+}
+
+.child {
+  width: calc(50vw + 20px);
+}
+```
+
+Now the calculation is based on the viewport, providing more predictable and consistent results, irrespective of the parent element's width.  Alternatively, if the width needs to be relative to its parent, ensure there are no unexpected factors that change the parent width.  If the parent width is determined by its content, padding, or margins, these must be properly accounted for.
+
+For more complex scenarios, consider using a JavaScript solution to dynamically calculate element sizes if necessary.
