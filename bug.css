@@ -1,0 +1,13 @@
+The CSS property `calc()` is used to perform calculations within CSS.  However, there is a subtle bug that can occur when using `calc()` with percentages and other units simultaneously within a nested context.  Consider the following example:
+
+```css
+.parent {
+  width: 50%;
+}
+
+.child {
+  width: calc(50% + 20px);
+}
+```
+
+In this scenario, the calculation for `.child`'s width is performed relative to its *parent's* width, not the viewport.  This may lead to unexpected results if the parent's width isn't what you anticipate. If the parent element's width is smaller than expected due to other CSS rules, it will also affect the child's width.
